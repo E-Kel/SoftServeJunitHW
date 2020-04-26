@@ -40,16 +40,17 @@ public class JunitTests {
         LOGGER.info(String.format("I'm %s! Execute me!", LOGGER.getName()));
     }
 
-    @Order(3)
+
     @Test
+    @Order(3)
     public void calculateShouldReturnSumOfAllIntegersInCollection() {
         List<Integer> numbers = asList(1, 2, 3, 4, 5);
         assertEquals(calculate(numbers),(1 + 2 + 3 + 4 + 5));
         LOGGER.trace("The method is executed;\n");
     }
 
-    @Order(2)
     @Test
+    @Order(2)
     public void transformKeepStringsShorterThant4Characters() {
         List<String> collection = asList("My", "name", "is", "John", "Doe");
         List<String> expected = asList("My", "is", "Doe");
@@ -57,8 +58,8 @@ public class JunitTests {
         LOGGER.trace("The method is executed;\n");
     }
 
-    @Order(1)
     @Test
+    @Order(1)
     public void transformShouldConvertCollectionElementsToUpperCase() {
         List<String> collection = asList("My", "name", "is", "John", "Doe");
         List<String> expected = asList("MY", "NAME", "IS", "JOHN", "DOE");
