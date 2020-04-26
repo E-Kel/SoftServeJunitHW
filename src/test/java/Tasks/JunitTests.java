@@ -3,6 +3,7 @@ package Tasks;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -38,21 +39,25 @@ public class JunitTests {
     public static void before(){
         LOGGER.info(String.format("I'm %s! Execute me!", LOGGER.getName()));
     }
+
+    @Order(3)
     @Test
     public void calculateShouldReturnSumOfAllIntegersInCollection() {
         List<Integer> numbers = asList(1, 2, 3, 4, 5);
         assertEquals(calculate(numbers),(1 + 2 + 3 + 4 + 5));
         LOGGER.trace("The method is executed;\n");
     }
+
+    @Order(2)
     @Test
     public void transformKeepStringsShorterThant4Characters() {
         List<String> collection = asList("My", "name", "is", "John", "Doe");
         List<String> expected = asList("My", "is", "Doe");
         assertEquals(transform2(collection),expected);
         LOGGER.trace("The method is executed;\n");
-
     }
 
+    @Order(1)
     @Test
     public void transformShouldConvertCollectionElementsToUpperCase() {
         List<String> collection = asList("My", "name", "is", "John", "Doe");
